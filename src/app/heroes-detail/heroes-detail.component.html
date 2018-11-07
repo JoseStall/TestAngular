@@ -1,0 +1,14 @@
+<div class="container">
+    <ul *ngFor="let hero of heroesList | async" class="list-group">
+      <li class="list-group-item">id: {{hero.id}}</li>
+      <li class="list-group-item">nom: {{hero.name}}</li>
+      <ul *ngFor="let adress of hero.addresses">
+        <li class="list-group-item"> Rue: {{adress.street}}</li>
+        <li class="list-group-item"> Ville: {{adress.city}}</li>
+        <li class="list-group-item"> Code Postal: {{adress.zip}}</li>
+        <li class="list-group-item">Pays: {{adress.state}}</li>
+
+      </ul>
+      <li class="list-group-item"><button class="btn btn-primary" [routerLink]="[ '/heroes' ]">Retour</button></li>
+    </ul>
+</div>

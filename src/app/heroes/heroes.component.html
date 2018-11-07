@@ -1,0 +1,23 @@
+<div class="container">
+<h1 class="text-center py-3">Liste des héros</h1>
+  <table class="table ">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>nom</th>
+      <th>Détail</th>
+      <th>Editer</th>      
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let hero of heroesList | async">
+      <td scope="row">{{ hero.id }}</td>
+      <td> {{ hero.name}} </td>
+      <td><button class="btn btn-primary" [routerLink]="[ '/hero', {id = hero.id} ]">Détail</button></td>
+      <td><button class="btn btn-warning" [routerLink]="[ '/hero', hero.id, 'edit' ]">Editer</button></td> 
+    </tr>
+
+  </tbody>
+</table>
+<button class="btn btn-success" [routerLink]="[ '/hero/post' ]" >Ajouter</button>
+</div>
