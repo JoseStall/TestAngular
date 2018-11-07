@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Hero } from '../hero';
+import { Hero, Address } from '../hero';
 import { Observable } from 'rxjs';
 import { map } from "rxjs/operators";
 import { GenericService } from '../services/generic.service';
@@ -39,11 +39,14 @@ export class HeroesDetailComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    console.log(form.value['name']);
-    console.log(form.value);
     const hero = new Hero;
+    const address = new Address;
+    address.city = form.value['city'];
+    address.street = form.value['street'];
+    address.zip = form.value['zip'];
+    address.state = form.value['country']
     hero.name = form.value['name'];
-    hero.addresses = [form.value['street'],form.value['city'], form.value['zip'], form.value['country']];
+    hero.addresses = new Array(address)
     this.generic.postT(hero,'heroes')
     
     
