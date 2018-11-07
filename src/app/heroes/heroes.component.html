@@ -13,11 +13,11 @@
     <tr *ngFor="let hero of heroesList | async">
       <td scope="row">{{ hero.id }}</td>
       <td> {{ hero.name}} </td>
-      <td><button class="btn btn-primary" [routerLink]="[ '/hero', {id = hero.id} ]">Détail</button></td>
-      <td><button class="btn btn-warning" [routerLink]="[ '/hero', hero.id, 'edit' ]">Editer</button></td> 
+      <td><button class="btn btn-primary" [routerLink]="[ '/hero',  hero.id ]">Détail</button></td>
+      <td><button class="btn btn-warning" [routerLink]="[ '/hero', hero.id ,'edit']">Editer</button></td> 
     </tr>
 
   </tbody>
 </table>
-<button class="btn btn-success" [routerLink]="[ '/hero/post' ]" >Ajouter</button>
+<button class="btn btn-success" [routerLink]="[ '/hero/0/post' ]" >Ajouter</button>
 </div>

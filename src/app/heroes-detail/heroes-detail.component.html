@@ -1,4 +1,4 @@
-<div class="container">
+<div *ngIf="detailBoolean" class="container">
     <ul *ngFor="let hero of heroesList | async" class="list-group">
       <li class="list-group-item">id: {{hero.id}}</li>
       <li class="list-group-item">nom: {{hero.name}}</li>
@@ -10,5 +10,76 @@
 
       </ul>
       <li class="list-group-item"><button class="btn btn-primary" [routerLink]="[ '/heroes' ]">Retour</button></li>
+    </ul>
+</div>
+
+<div *ngIf="postBoolean" class="container">
+  
+  <h2>Créer un nouveau héros</h2>
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+  <div class="form-group">
+        <label>Nom:
+          <input class="form-control" id="name" name="name" #heroName ngModel required>
+        </label>
+    </div>
+      <div class="form-group">
+        <label>Rue:
+          <input class="form-control" id="street" name="street" [(ngModel)]="street" required #addressStreet>
+        </label>
+      </div>
+       <div class="form-group">
+         <label>Ville:
+          <input class="form-control" id="city" name="city" [(ngModel)]="city" required #addressCity>
+         </label>
+        </div>
+        <div class="form-group">
+         <label>Code Postal:
+          <input class="form-control" id="zip" name="zip" [(ngModel)]="zip" required #addressZip>
+         </label>
+        </div>
+        <div class="form-group">
+         <label>Pays:
+          <input class="form-control" id="country" name="country" [(ngModel)]="country" required #addressCountry>
+         </label>
+        </div>
+    <button type="submit" class="btn btn-success" [disabled]="f.invalid" >Créer</button>
+    </form>
+    <button class="btn btn-primary" [routerLink]="[ '/heroes' ]">Retour</button>
+
+</div>
+
+<div *ngIf="updateBoolean" class="container" >
+  <h2>Modifier votre héros</h2>
+    <ul *ngFor="let hero of heroesList | async" class="list-group">
+        <li class="list-group-item">id: {{hero.id}}</li>
+        <li class="list-group-item">
+          <label>Nom:
+            <input [(ngModel)]="hero.name" placeholder="hero.name">
+          </label>
+        </li>
+      <ul *ngFor="let adress of hero.addresses">
+        <li class="list-group-item">
+          <label>Rue:
+            <input [(ngModel)]="adress.street" placeholder="adress.street">
+          </label>
+         </li>
+         <li class="list-group-item">
+           <label>Ville:
+            <input [(ngModel)]="adress.city" placeholder="adress.city">
+           </label>
+          </li>
+          <li class="list-group-item">
+           <label>Code Postal:
+            <input [(ngModel)]="adress.zip" placeholder="adress.zip">
+           </label>
+          </li>
+          <li class="list-group-item">
+           <label>Pays:
+            <input [(ngModel)]="adress.state" placeholder="adress.state">
+           </label>
+          </li>
+      </ul>
+        <li class="list-group-item"><button class="btn btn-success" (click)="onUpdate(hero)" >Modifier</button></li>
+        <li class="list-group-item"><button class="btn btn-primary" [routerLink]="[ '/heroes' ]">Retour</button></li>
     </ul>
 </div>

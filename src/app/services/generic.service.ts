@@ -28,8 +28,7 @@ export class GenericService<T> {
    */
   putT(data, name: string) {
 
-    this.httpclient.put(environment.apiUrl + "/" + name,
-      data)
+    this.httpclient.put(environment.apiUrl + "/" + name + "/" + data.id, data)
       .subscribe(
         data => {
           console.log("PUT Request is successful ", data);

@@ -9,8 +9,7 @@ export const routes :Routes = [
   { path: '', redirectTo: 'heroes', pathMatch: 'full' },
   { path: 'heroes', component: HeroesComponent },
   { path: 'hero/:id', component: HeroesDetailComponent },
-  { path: 'hero/:id/:edit', component: HeroesDetailComponent},
-  { path: 'hero/:post', component: HeroesDetailComponent}
+  { path: 'hero/:id/:request', component: HeroesDetailComponent},
 ]
 
 
